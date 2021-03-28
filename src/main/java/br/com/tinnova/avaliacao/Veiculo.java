@@ -16,7 +16,7 @@ public class Veiculo extends PanacheEntity {
 	
 	private String veiculo;
 	
-	private String marca;
+	private Marcas marca;
 	
 	private Integer ano;
 	
@@ -38,11 +38,11 @@ public class Veiculo extends PanacheEntity {
 		this.veiculo = veiculo;
 	}
 
-	public String getMarca() {
+	public Marcas getMarca() {
 		return marca;
 	}
 
-	public void setMarca(String marca) {
+	public void setMarca(Marcas marca) {
 		this.marca = marca;
 	}
 
