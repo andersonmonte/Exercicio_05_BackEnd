@@ -10,6 +10,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
+/**
+ * Classe que representa a entidade VEICULO em uma base de dados.
+ */
 @Entity
 @Table(name = "VEICULO")
 public class Veiculo extends PanacheEntity {

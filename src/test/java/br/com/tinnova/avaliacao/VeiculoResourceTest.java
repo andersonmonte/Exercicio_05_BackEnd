@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
 
+/**
+ * Classe de testes do VeiculoResource
+ *  
+ */
 @QuarkusTest
 public class VeiculoResourceTest {
     

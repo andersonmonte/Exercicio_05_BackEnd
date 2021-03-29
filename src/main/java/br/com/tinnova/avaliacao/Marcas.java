@@ -1,5 +1,8 @@
 package br.com.tinnova.avaliacao;
 
+/**
+ * Enum criado para padronizar os nomes das marcas de veículo.
+ */
 public enum Marcas {
 	VOLKSWAGEN("Volkswagen"), 
 	CHEVROLET("Chevrolet"),
@@ -18,7 +21,14 @@ public enum Marcas {
     Marcas(final String nome) {
         this.nome = nome;
     }
-
+    
+	/**
+	 * Busca o enum correto a partir de uma String.
+	 * 
+	 * @param nome - String;
+	 * 
+	 * @return Enum, ou null
+	 */
 	public static Marcas buscarMarcaEnum(String nome){
 	    for(Marcas m : Marcas.values()){
 	        if( m.toString().toUpperCase().equals(nome.toUpperCase())){

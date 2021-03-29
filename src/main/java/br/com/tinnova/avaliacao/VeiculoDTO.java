@@ -1,5 +1,10 @@
 package br.com.tinnova.avaliacao;
 
+/**
+ * Classe utilizada para as operações de transferência de dados de Veículos,
+ * mas que não possui todos os atributos da referida entidade, com o objetivo
+ * de proteger certos dados que não devem ser alterados pelos usuários.
+ */
 public class VeiculoDTO {
 
 	private String veiculo;

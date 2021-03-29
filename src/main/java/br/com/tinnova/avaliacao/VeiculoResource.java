@@ -20,16 +20,33 @@ import javax.ws.rs.core.MediaType;
 
 import io.quarkus.panache.common.Parameters;
 
+/**
+ * Classe que possui os métodos de acesso aos recursos de Veiculo.
+ */
 @Path("veiculos")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class VeiculoResource {
 
+	/**
+	 * Obtém todos os veículos cadastrados na base.
+	 * 
+	 * @return Lista de veículos - List<Veiculo>
+	 */
 	@GET
 	public List<Veiculo> buscarTodosVeiculos() {
 		return Veiculo.listAll();
 	}
 	
+	/**
+	 * Obtém veículos de acordo com o parâmetro de busca passado.
+	 * A correspondência do parâmetro é buscada em todos os campos
+	 * da entidade Veículo.
+	 * 
+	 *  @param parametro - String
+	 * 
+	 * @return Lista de veículos - List<Veiculo>
+	 */
 	@GET
 	@Path("find")
 	public List<Veiculo> buscarVeiculosPorParametro(@QueryParam("param") String parametro) {
@@ -57,12 +74,24 @@ public class VeiculoResource {
 		return listaResultado;
 	}
 	
+	/**
+	 * Obtém os dados de um Veículo em particular através do seu id.
+	 * 
+	 *  @param id - identificador do Veículo
+	 * 
+	 * @return Veiculo
+	 */
 	@GET
 	@Path("{id}")
 	public Veiculo buscarVeiculoPorId(@PathParam("id") Long id) {
 		return Veiculo.findById(id);
 	}
 	
+	/**
+	 * Cadastra um novo Veículo.
+	 * 
+	 *  @param veiculoDTO - Veiculo a ser persistido
+	 */
 	@POST
 	@Transactional
 	public void cadastrarVeiculo(VeiculoDTO veiculoDTO) {
@@ -75,6 +104,13 @@ public class VeiculoResource {
 		novoVeiculo.persist();
 	}
 	
+	/**
+	 * Atualiza todos os dados de um veículo.
+	 * 
+	 *  @param veiculoDTO - Veiculo a ser atualizado
+	 *  @param id - identificador do Veiculo
+	 *  
+	 */
 	@PUT
 	@Path("{id}")
 	@Transactional
@@ -95,6 +131,14 @@ public class VeiculoResource {
 		}
 	}
 	
+	/**
+	 * Atualiza apenas os dados de um veículo que foram
+	 * solicitados pelo cliente.
+	 * 
+	 *  @param veiculoDTO - Veiculo a ser atualizado
+	 *  @param id - identificador do Veiculo
+	 *  
+	 */
 	@PATCH
 	@Path("{id}")
 	@Transactional
@@ -130,7 +174,12 @@ public class VeiculoResource {
 			throw new NotFoundException();
 		}
 	}
-	
+	/**
+	 * Exclui o veículo da base de dados.
+	 * 
+	 *  @param id - identificador do Veiculo
+	 *  
+	 */
 	@DELETE
 	@Path("{id}")
 	@Transactional
