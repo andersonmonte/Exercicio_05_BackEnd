@@ -1,30 +1,33 @@
 # Exercicio_05_BackEnd project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Projeto criado utilizando o framework Quarkus: https://quarkus.io/ .
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Extensões utilizadas no projeto
 
-## Running the application in dev mode
+SmallRye OpenAPI (Swagger)
+Hibernate ORM with Panache
+JDBC Driver - MySQL
+RESTEasy JSON-B
+SmallRye Health
 
-You can run your application in dev mode that enables live coding using:
+## Como rodar o projeto
+
+Primeiramente, é necessaário criar um container docker com a base de dados MySQL:
 ```
-./mvnw quarkus:dev
+docker run -p3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=teste -d --rm mysql:8.0.19
+```
+Alternativamente, este comando também pode ser utilizado, apenas com uma alteração na opção de porta:
+```
+docker run --network host -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=teste -d --rm mysql:8.0.19
 ```
 
-## Packaging and running the application
+Após a criação, você pode verificar que o container foi devidamente criado executando `docker ps`.
 
-The application can be packaged using `./mvnw package`.
-It produces the `Exercicio_05_BackEnd-1.0-SNAPSHOT-runner.jar` file in the `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
-
-The application is now runnable using `java -jar target/Exercicio_05_BackEnd-1.0-SNAPSHOT-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: `./mvnw package -Pnative`.
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
-
-You can then execute your native executable with: `./target/Exercicio_05_BackEnd-1.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image-guide.
+Com o banco de dados devidamente iniciado, basta entrar na pasta do projeto onde está o seguinte arquivo .jar e executá-lo:
+```
+Exercicio_05_BackEnd\target
+```
+```
+java - jar Exercicio_05_BackEnd-dev.jar
+```
+A aplicação deverá estar disponível em http://localhost:8080/, e a documentação da api disponível em http://localhost:8080/swagger-ui.
