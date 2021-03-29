@@ -19,6 +19,15 @@ public enum Marcas {
         this.nome = nome;
     }
 
+	public static Marcas buscarMarcaEnum(String nome){
+	    for(Marcas m : Marcas.values()){
+	        if( m.toString().toUpperCase().equals(nome.toUpperCase())){
+	            return m;
+	        }
+	    }
+	    return null;
+	}
+    
     /* (non-Javadoc)
      * @see java.lang.Enum#toString()
      */

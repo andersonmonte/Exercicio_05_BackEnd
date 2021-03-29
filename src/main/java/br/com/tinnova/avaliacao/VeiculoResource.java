@@ -29,7 +29,7 @@ public class VeiculoResource {
 	public List<Veiculo> buscarTodosVeiculos() {
 		return Veiculo.listAll();
 	}
-
+	
 	@GET
 	@Path("find")
 	public List<Veiculo> buscarVeiculosPorParametro(@QueryParam("param") String parametro) {
@@ -38,8 +38,8 @@ public class VeiculoResource {
 		listaResultado.addAll(Veiculo.find("veiculo like concat('%', :veiculo, '%')", 
 				Parameters.with("veiculo", parametro)).list());
 		
-		if (buscarMarcaEnum(parametro) != null) {
-			listaResultado.addAll(Veiculo.find("marca", buscarMarcaEnum(parametro)).list());
+		if (Marcas.buscarMarcaEnum(parametro) != null) {
+			listaResultado.addAll(Veiculo.find("marca", Marcas.buscarMarcaEnum(parametro)).list());
 		}
 		
 		try {
@@ -143,12 +143,5 @@ public class VeiculoResource {
 		});
 	}
 	
-	public static Marcas buscarMarcaEnum(String nome){
-	    for(Marcas m : Marcas.values()){
-	        if( m.toString().toUpperCase().equals(nome.toUpperCase())){
-	            return m;
-	        }
-	    }
-	    return null;
-	}
+
 }
