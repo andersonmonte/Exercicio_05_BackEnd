@@ -4,11 +4,11 @@ Projeto criado utilizando o framework Quarkus: https://quarkus.io/ .
 
 ## Extensões utilizadas no projeto
 
-SmallRye OpenAPI (Swagger)
-Hibernate ORM with Panache
-JDBC Driver - MySQL
-RESTEasy JSON-B
-SmallRye Health
+SmallRye OpenAPI (Swagger)<br/>
+Hibernate ORM with Panache<br/>
+JDBC Driver - MySQL<br/>
+RESTEasy JSON-B<br/>
+SmallRye Health<br/>
 
 ## Como rodar o projeto
 
